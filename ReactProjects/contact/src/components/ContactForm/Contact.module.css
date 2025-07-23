@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  max-width: 1000px;
+  margin: 0 auto;
+  
+}
+.top_btn {
+  display: flex;
+  gap: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputField {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+.inputField input{
+       height: 30px;
+       width: 100%;
+       border-radius: 5px
+}
+.inputField label{
+     position: absolute;
+     top : -10px;
+     left: 10px;
+     background-color: white;
+     padding: 0 5px;
+
+}
