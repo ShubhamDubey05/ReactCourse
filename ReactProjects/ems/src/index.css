@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+
+
+
+#scroll-box::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari */
+}
+#all::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari */
+}
+#cards::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari */
+}
