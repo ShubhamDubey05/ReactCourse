@@ -1,0 +1,10 @@
+/* Specific element ke liye (id = dashboard) */
+#dashboard {
+  overflow-y: auto;              /* scroll kaam karega */
+  scrollbar-width: none;         /* Firefox */
+  -ms-overflow-style: none;      /* IE/Edge */
+}
+
+#dashboard::-webkit-scrollbar {
+  display: none;                 /* Chrome, Safari */
+}
