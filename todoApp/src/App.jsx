@@ -6,12 +6,12 @@ import TodoItem from "./components/TodoItem";
 
 function App() {
   const [todos, setTodos] = useState(() => {
-    // ✅ Initial load from localStorage (runs once)
+    //  Initial load from localStorage (runs once)
     const saved = localStorage.getItem("todos");
     return saved ? JSON.parse(saved) : [];
   });
 
-  // ✅ Add Todo
+  //  Add Todo
   
 const addTodo = (todo) => {
   let isDuplicate = todos.some(
@@ -19,23 +19,23 @@ const addTodo = (todo) => {
   );
   if (isDuplicate) return alert("Todo already exists!"); 
   setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
-  return true; // ✅ success → true return
+  return true; 
 };
 
 
-  // ✅ Update Todo
+  //  Update Todo
   const updateTodo = (id, updatedTodo) => {
     setTodos((prev) =>
       prev.map((todoPrev) => (todoPrev.id === id ? updatedTodo : todoPrev))
     );
   };
 
-  // ✅ Remove Todo
+  //  Remove Todo
   const removeTodo = (id) => {
     setTodos((prev) => prev.filter((todoPrev) => todoPrev.id !== id));
   };
 
-  // ✅ Toggle Complete
+  //  Toggle Complete
   const toggleTodo = (id) => {
     setTodos((prev) =>
       prev.map((todoPrev) =>
@@ -46,7 +46,7 @@ const addTodo = (todo) => {
     );
   };
 
-  // ✅ Save todos to localStorage whenever they change
+  //  Save todos to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);

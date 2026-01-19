@@ -6,13 +6,13 @@ function TodoItem({ todo }) {
   const [todoMsg, setTodoMsg] = useState(todo.todo);
   const { updateTodo, removeTodo, toggleTodo } = useTodo();
 
-  // ✅ Save edited todo
+  //  Save edited todo
   const editTodo = () => {
     updateTodo(todo.id, { ...todo, todo: todoMsg });
     setIsTodoEditable(false);
   };
 
-  // ✅ Toggle completed
+  //  Toggle completed
   const toggleComplete = () => {
     toggleTodo(todo.id);
   };
