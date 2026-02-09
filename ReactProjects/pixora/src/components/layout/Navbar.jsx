@@ -17,7 +17,7 @@ const Navbar = ({ query, setQuery, onSearch,favorites,showFavorites, setShowFavo
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-2">
               <Camera className="text-violet-500" size={24} />
-              <span className="text-xl font-bold text-white">Pixabay</span>
+              <span className="text-xl font-bold text-white">Pixora</span>
             </div>
 
             <div className="flex-1 max-w-xl mx-8">
