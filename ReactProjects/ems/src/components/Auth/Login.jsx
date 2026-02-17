@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -12,36 +14,80 @@ const Login = ({ handleLogin }) => {
   };
 
   return (
-    <div className="bg-gray-900 min-h-screen flex items-center justify-center">
-      <div className="border border-gray-700 bg-gray-800 p-8 rounded-2xl shadow-lg w-96">
-        <h2 className="text-2xl font-bold text-white mb-6 text-center">Login</h2>
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0f172a] px-4">
 
-        <form onSubmit={submitHandler}>
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            id="email"
-            className="mb-5 bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-            placeholder="name@gmail.com"
-          />
+      {/* Background Glow Effects */}
+      <div className="absolute w-96 h-96 bg-purple-600 rounded-full blur-[150px] opacity-30 top-[-100px] left-[-100px]"></div>
+      <div className="absolute w-96 h-96 bg-blue-600 rounded-full blur-[150px] opacity-30 bottom-[-100px] right-[-100px]"></div>
 
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            id="password"
-            className="mb-5 bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-            placeholder="Enter password"
-          />
+      {/* Login Card */}
+      <div className="relative w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-8">
 
+        <h2 className="text-3xl font-bold text-white text-center mb-2">
+          Welcome Back
+        </h2>
+
+        <p className="text-gray-400 text-center mb-6 text-sm">
+          Access your EMS Dashboard
+        </p>
+
+        <form onSubmit={(e)=>{
+          submitHandler(e)
+        }} className="space-y-5">
+
+          {/* Email */}
+          <div>
+            <label className="block text-gray-300 text-sm mb-2">
+              Email Address
+            </label>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              required
+              placeholder="name@gmail.com"
+              className="w-full bg-white/5 border border-white/10 text-white rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300 placeholder-gray-500"
+            />
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-gray-300 text-sm mb-2">
+              Password
+            </label>
+
+            <div className="relative">
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type={showPassword ? "text" : "password"}
+                required
+                placeholder="Enter your password"
+                className="w-full bg-white/5 border border-white/10 text-white rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-300 placeholder-gray-500"
+              />
+
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-3 cursor-pointer text-gray-400 hover:text-white transition"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </span>
+            </div>
+          </div>
+
+          {/* Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:outline-none focus:ring-4 focus:ring-blue-500"
+            className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:opacity-90 cursor-pointer active:scale-95 transition-all duration-300 text-white font-semibold py-2.5 rounded-xl shadow-lg"
           >
             Login
           </button>
         </form>
+
+        <p className="text-center text-gray-500 text-xs mt-6">
+           All rights reserved.© 2026 EMS.
+        </p>
+
       </div>
     </div>
   );

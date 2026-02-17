@@ -1,44 +1,23 @@
-import React from 'react'
-import { Progress } from './Progress'
-import Complete from './Complete'
-import Failed from './Failed'
-import New from './New'
+import React from "react";
+import  Progress  from "./Progress";
+import Complete from "./Complete";
+import Failed from "./Failed";
+import New from "./New";
 
-const Tasklist = ({data}) => {
-  console.log(data)
+const Tasklist = ({ data }) => {
   return (
     <div
-      id="scroll-box"
-      className="h-[55%] overflow-x-auto w-full mt-10 flex items-center justify-start gap-5 flex-nowrap py-5 px-5"
+      className="mt-10 flex gap-6 overflow-x-auto pb-6 scrollbar-thin scrollbar-thumb-purple-600 scrollbar-track-transparent"
     >
-      {data.tasks.map((ele)=>{
-         if(ele.active){
-           return <Progress key={ele.id} data={ele}/>
-         }
-         if(ele.complete){
-           return <Complete key={ele.id} data={ele}/>
-         }
-         if(ele.failed){
-           return <Failed key={ele.id} data={ele}/>
-         }
-         if(ele.newTask){
-           return <New key={ele.id} data={ele} />
-         }
-         
+      {data.tasks.map((ele, index) => {
+        if (ele.active) return <Progress key={index} data={ele} />;
+        if (ele.complete) return <Complete key={index} data={ele} />;
+        if (ele.failed) return <Failed key={index} data={ele} />;
+        if (ele.isNew) return <New key={index} data={ele} />;
+        return null;
       })}
-     
-
-      
-      
-
-     
-
-      
-
-
-      
     </div>
-  )
-}
+  );
+};
 
-export default Tasklist
+export default Tasklist;

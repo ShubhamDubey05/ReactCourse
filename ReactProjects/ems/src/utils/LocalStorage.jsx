@@ -48,11 +48,11 @@ const employees = [
     email: "employee2@example.com",
     firstName: "Neha",
     password: "123",
-    taskCounts: { 
-      new: 1, 
-      complete: 2, 
-      progress: 3, 
-      failed: 1 
+    taskCounts: {
+      new: 1,
+      complete: 2,
+      progress: 3,
+      failed: 1,
     },
     tasks: [
       {
@@ -239,6 +239,96 @@ const employees = [
       },
     ],
   },
+
+  {
+    id: 6,
+    email: "employee6@example.com",
+    firstName: "Bhole",
+    password: "123",
+    taskCounts: {
+      new: 2,
+      complete: 1,
+      progress: 2,
+      failed: 0,
+    },
+    tasks: [
+      {
+        title: "Design Homepage",
+        description: "Create responsive UI for homepage",
+        date: "2025-08-23",
+        category: "Design",
+        active: true,
+        newTask: true,
+        complete: false,
+        failed: false,
+      },
+      {
+        title: "Fix Navbar Bug",
+        description: "Resolve alignment issue in navbar",
+        date: "2025-08-25",
+        category: "Bug Fix",
+        active: false,
+        newTask: false,
+        complete: true,
+        failed: false,
+      },
+      {
+        title: "Update Dashboard",
+        description: "Add statistics cards to dashboard",
+        date: "2025-08-28",
+        category: "Development",
+        active: true,
+        newTask: false,
+        complete: false,
+        failed: false,
+      },
+    ],
+  },
+
+  {
+    id: 7,
+    email: "employee7@example.com",
+    firstName: "Shubhita",
+    password: "123",
+    taskCounts: {
+      new: 5,
+      complete: 10,
+      progress: 3,
+      failed: 1,
+    },
+    tasks: [
+      {
+        title: "Client Meeting",
+        description: "Discuss project requirements with client",
+        date: "2025-08-23",
+        category: "Management",
+        active: true,
+        newTask: true,
+        complete: false,
+        failed: false,
+      },
+      {
+        title: "Design Wireframes",
+        description: "Prepare wireframes for new features",
+        date: "2025-08-27",
+        category: "Design",
+        active: false,
+        newTask: false,
+        complete: true,
+        failed: false,
+      },
+      {
+        title: "Fix Deployment",
+        description: "Resolve errors in production build",
+        date: "2025-08-30",
+        category: "DevOps",
+        active: false,
+        newTask: false,
+        complete: false,
+        failed: true,
+      },
+    ],
+  },
 ];
 
 const admin = [
@@ -247,11 +337,11 @@ const admin = [
     email: "admin@example.com",
     firstName: "Arghavan",
     password: "123",
-     taskCounts: { 
-      new: 1, 
-      complete: 2, 
-      progress: 3, 
-      failed: 1 
+    taskCounts: {
+      new: 1,
+      complete: 2,
+      progress: 3,
+      failed: 1,
     },
   },
 ];

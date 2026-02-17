@@ -3,7 +3,7 @@ import Login from "./components/Auth/Login";
 import Employee from "./components/DashBoard/Employee";
 import Admin from "./components/DashBoard/Admin";
 import { AuthContext } from "./context/AuthProvider";
-import { setLocalStorage } from "./utils/LocalStorage";
+
 
 const App = () => {
   // localStorage.clear();

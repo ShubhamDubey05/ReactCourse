@@ -2,29 +2,30 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 const AllTask = () => {
-  const authData = useContext(AuthContext); // get employees/admin from context
+  const authData = useContext(AuthContext);
   const employees = authData?.employees || [];
 
   return (
-    <div className="mt-5 p-5 rounded bg-gray-800 border border-gray-700 shadow">
-      <div className="bg-red-200 flex justify-between mb-2 py-2 px-4 rounded text-gray-800 font-semibold">
-        <h2 className=" font-bold w-1/4">Employee Name</h2>
-        <h3 className=" font-bold w-1/4">New Task</h3>
-        <h4 className=" font-bold w-1/4">Active Task</h4>
-        <h2 className=" font-bold w-1/4">Completed</h2>
-        <h2 className=" font-bold w-1/4">Failed</h2>
+    <div className="mt-8 p-6 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl">
+
+      <div className="hidden md:flex justify-between mb-4 py-3 px-6 rounded-xl bg-gradient-to-r from-purple-600/20 to-blue-600/20 text-gray-300 text-sm uppercase tracking-wide">
+        <span className="w-1/5">Employee</span>
+        <span className="w-1/5">New</span>
+        <span className="w-1/5">Active</span>
+        <span className="w-1/5">Completed</span>
+        <span className="w-1/5">Failed</span>
       </div>
 
       {employees.map((emp) => (
         <div
           key={emp.id}
-          className="flex justify-between py-2 px-4 mb-1 rounded bg-gray-700 text-white"
+          className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 py-4 px-6 mb-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 border border-white/5"
         >
-          <span className="w-1/4  font-bold text-white">{emp.firstName}</span>
-          <span className="w-1/4 font-bold text-blue-500">{emp.taskCounts.new}</span>
-          <span className="w-1/4 font-bold text-yellow-400">{emp.taskCounts.progress}</span>
-          <span className="w-1/4 font-bold text-green-500">{emp.taskCounts.complete}</span>
-          <span className="w-1/4 font-bold text-red-500" >{emp.taskCounts.failed}</span>
+          <span className="md:w-1/5 font-semibold">{emp.firstName}</span>
+          <span className="md:w-1/5 text-blue-400">New: {emp.taskCounts.new}</span>
+          <span className="md:w-1/5 text-yellow-400">Active: {emp.taskCounts.progress}</span>
+          <span className="md:w-1/5 text-green-400">Done: {emp.taskCounts.complete}</span>
+          <span className="md:w-1/5 text-red-400">Failed: {emp.taskCounts.failed}</span>
         </div>
       ))}
     </div>

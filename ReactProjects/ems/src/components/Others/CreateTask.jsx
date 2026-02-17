@@ -16,7 +16,7 @@ const CreateTask = () => {
       date,
       categories,
       description,
-      isNew: true,   // ✅ renamed
+      isNew: true,
       active: false,
       failed: false,
       complete: false,
@@ -27,17 +27,13 @@ const CreateTask = () => {
     data.forEach((elem) => {
       if (elem.firstName.toLowerCase() === assignee.toLowerCase()) {
         elem.tasks.push(newTask);
-
-        // ensure taskCounts exists
-        elem.taskCounts = elem.taskCounts || { new: 0, complete: 0, progress: 0 };
-        elem.taskCounts.new= elem.taskCounts.new + 1;
+        elem.taskCounts = elem.taskCounts || { new: 0, complete: 0, progress: 0, failed: 0 };
+        elem.taskCounts.new += 1;
       }
     });
 
-    // update localStorage (using your util)
     setLocalStorage("employees", data);
 
-    // clear form
     setTitle("");
     setDate("");
     setAssignee("");
@@ -46,73 +42,33 @@ const CreateTask = () => {
   };
 
   return (
-    <div className="mt-5 w-full">
+    <div className="w-full">
       <form
         onSubmit={submitHandler}
-        className="w-[80%] mx-auto bg-gray-800 border border-gray-700 p-8 rounded-2xl shadow grid grid-cols-1 md:grid-cols-2 gap-6"
+        className="w-full lg:w-[85%] mx-auto bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-10 rounded-3xl shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-8 transition hover:shadow-purple-500/20"
       >
-        {/* Left Column */}
         <div className="space-y-5">
-          <div>
-            <label className="block text-gray-300 font-medium">Task Title</label>
-            <input
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              type="text"
-              placeholder="Make a UI Design"
-              className="mt-1 w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2 focus:ring focus:ring-green-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-300 font-medium">Date</label>
-            <input
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              type="date"
-              className="mt-1 w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2 focus:ring focus:ring-green-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-300 font-medium">Assign To</label>
-            <input
-              value={assignee}
-              onChange={(e) => setAssignee(e.target.value)}
-              type="text"
-              placeholder="Enter assignee name"
-              className="mt-1 w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2 focus:ring focus:ring-green-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-300 font-medium">Categories</label>
-            <input
-              value={categories}
-              onChange={(e) => setCategories(e.target.value)}
-              type="text"
-              placeholder="Enter categories"
-              className="mt-1 w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2 focus:ring focus:ring-green-500"
-            />
-          </div>
+          <Input label="Task Title" value={title} setValue={setTitle} placeholder="Make UI Design" />
+          <Input label="Date" value={date} setValue={setDate} type="date" />
+          <Input label="Assign To" value={assignee} setValue={setAssignee} placeholder="Employee name" />
+          <Input label="Categories" value={categories} setValue={setCategories} placeholder="Design, Frontend" />
         </div>
 
-        {/* Right Column */}
         <div className="flex flex-col space-y-5">
           <div>
-            <label className="block text-gray-300 font-medium">Description</label>
+            <label className="text-gray-300 text-sm">Description</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows="8"
               placeholder="Enter task details..."
-              className="mt-1 w-full bg-gray-700 border border-gray-600 text-white rounded-lg p-2 focus:ring focus:ring-green-500 resize-none"
+              className="mt-2 w-full bg-white/5 border border-white/10 text-white rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 resize-none"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition"
+            className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:scale-105 cursor-pointer active:scale-95 transition-all duration-300 py-2.5 rounded-xl shadow-lg font-semibold"
           >
             Create Task
           </button>
@@ -121,5 +77,18 @@ const CreateTask = () => {
     </div>
   );
 };
+
+const Input = ({ label, value, setValue, type = "text", placeholder }) => (
+  <div>
+    <label className="text-gray-300 text-sm">{label}</label>
+    <input
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      type={type}
+      placeholder={placeholder}
+      className="mt-2 w-full bg-white/5 border border-white/10 text-white rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 placeholder-gray-500"
+    />
+  </div>
+);
 
 export default CreateTask;

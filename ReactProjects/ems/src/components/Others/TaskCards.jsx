@@ -1,40 +1,25 @@
 import React from "react";
 
-const TaskCards = ({data}) => {
- 
+const Card = ({ count, title, color }) => (
+  <div className="flex flex-col items-center justify-center 
+                  w-full sm:w-[48%] lg:w-[23%]
+                  bg-white/5 backdrop-blur-xl border border-white/10 
+                  py-8 px-6 rounded-2xl shadow-xl
+                  hover:scale-105 hover:shadow-purple-500/20 
+                  transition-all duration-300">
+
+    <h1 className="text-3xl font-bold">{count}</h1>
+    <h3 className={`text-lg font-medium mt-2 ${color}`}>{title}</h3>
+  </div>
+);
+
+const TaskCards = ({ data }) => {
   return (
     <div className="mt-10 flex flex-wrap justify-center gap-6">
-      <div className="flex flex-col items-center justify-center 
-                      w-full sm:w-[48%] lg:w-[23%] 
-                      bg-gray-800 border border-gray-700 text-white py-6 px-9 rounded-xl shadow 
-                      hover:scale-105 transition-transform duration-300">
-        <h1 className="text-3xl font-semibold">{data.taskCounts.progress}</h1>
-        <h3 className="text-xl font-medium text-green-400">In Progress</h3>
-      </div>
-
-      <div className="flex flex-col items-center justify-center 
-                      w-full sm:w-[48%] lg:w-[23%] 
-                      bg-gray-800 border border-blue-600 text-white py-6 px-9 rounded-xl shadow 
-                      hover:scale-105 transition-transform duration-300">
-        <h1 className="text-3xl font-semibold">{data.taskCounts.new}</h1>
-        <h3 className="text-xl font-medium text-blue-400">New Task</h3>
-      </div>
-
-      <div className="flex flex-col items-center justify-center 
-                      w-full sm:w-[48%] lg:w-[23%] 
-                      bg-gray-800 border border-pink-600 text-white py-6 px-9 rounded-xl shadow 
-                      hover:scale-105 transition-transform duration-300">
-        <h1 className="text-3xl font-semibold">{data.taskCounts.complete}</h1>
-        <h3 className="text-xl font-medium text-pink-400">Completed</h3>
-      </div>
-
-      <div className="flex flex-col items-center justify-center 
-                      w-full sm:w-[48%] lg:w-[23%] 
-                      bg-gray-800 border border-green-600 text-white py-6 px-9 rounded-xl shadow 
-                      hover:scale-105 transition-transform duration-300">
-        <h1 className="text-3xl font-semibold">{data.taskCounts.failed}</h1>
-        <h3 className="text-xl font-medium text-green-400">Closed</h3>
-      </div>
+      <Card count={data.taskCounts.progress} title="In Progress" color="text-yellow-400" />
+      <Card count={data.taskCounts.new} title="New Tasks" color="text-blue-400" />
+      <Card count={data.taskCounts.complete} title="Completed" color="text-green-400" />
+      <Card count={data.taskCounts.failed} title="Failed" color="text-red-400" />
     </div>
   );
 };
