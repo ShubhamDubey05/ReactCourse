@@ -8,12 +8,20 @@ The UI is designed with a modern SaaS-style dark theme, glassmorphism effects, s
 
 ---
 
-## 🌟 Live Preview
-(https://react-course-jade.vercel.app/)
+## 🌟 Live Demo
 
+🔗 https://react-course-jade.vercel.app/
 
+### 🔑 Demo Credentials
 
+**Admin Login**
+- Email: `admin@example.com`
+- Password: `123`
 
+**Employee Login**
+- Email: `employee1@example.com`  
+  (You can use employee1 to employee6)
+- Password: `123`
 
 ---
 
